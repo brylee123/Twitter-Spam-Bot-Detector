@@ -1,0 +1,62 @@
+STRUCTURE OF EACH LOG LINE
+
+  Each line is a json object describing an event. An event contains a set of
+  fields, some of which are common to all events. You may assume that there
+  are no malformed events and that there are no missing fields.
+
+
+EXPLANATION OF COMMON FIELDS
+
+    user: Username to which the event applies
+    action: Name of the event, all lowercase
+    timestamp: Integer representing the Unix time in milliseconds. For example, 1484849167761 is one millisecond after 1484849167760.
+
+
+EVENT LIST
+
+    follow: a user follows another user.
+    unfollow: a user unfollows another user.
+    tweet: a user sends out a public message. It can be a reply to another tweet.
+    retweet: a user shares someone's tweet.
+    like: a user likes a tweet. A retweet cannot be liked.
+
+
+FIELDS FOR FOLLOW
+
+    target: Username of the user being followed
+
+
+FIELDS FOR UNFOLLOW
+
+    target: Username of the user being unfollowed
+
+
+FIELDS FOR TWEET
+
+    id: Numeric identifier of the tweet
+    message: Text of the tweet
+    reply_id: Optional identifier of the tweet to which it is being replied.
+
+
+FIELDS FOR RETWEET
+
+    target_id: Numeric identifier of the tweet being retweeted
+
+
+FIELDS FOR LIKE
+
+    target_id: Numeric identifier of the tweet being liked
+
+
+NOTES
+
+    Events are ordered by increasing timestamp.
+    Each username uniquely identifies the user.
+    A user can retweet a tweet by someone that they do not follow.
+    A user can reply to a tweet by someone that they do not follow.
+    A user will not follow someone that they already follow.
+    A user will not follow itself.
+    There are no events with the same timestamp.
+    Tweet ids are not sequential nor ascending.
+    Tweet ids are below 2^64.
+

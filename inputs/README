@@ -1,0 +1,14 @@
+This folder contains input files to test your program.
+You may modify these files or add your own - they are purely for debugging.
+
+Each JSON file contains a dictionary with input parameters to your program.
+For example:
+    {
+        "log_path": "/home/candidate/candidate_files/py/inputs/small.log"
+    }
+
+To test your program using the JSON file run:
+    python test_answer.py ./inputs/small.json
+
+This calls identify_spammers() in answer.py as follows:
+    identify_spammers(log_path)
